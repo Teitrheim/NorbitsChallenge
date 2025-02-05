@@ -1,0 +1,36 @@
+﻿@model HomeModel
+
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<h2>
+    Vis biler for @Model.CompanyName
+</h2>
+<form asp-action="Index" data-ajax="true" data-ajax-method="POST" data-ajax-success="onSuccess">
+    <input type="hidden" name="companyId" value="@Model.CompanyId" />
+    <input type="text" name="licensePlate" />
+    <input type="submit" value="Søk" />
+</form>
+
+
+<div class="hidden" id="tireInfo">
+    <div>Denne bilen har <div id="tireCount" style="display: inline;"></div> dekk på dekkhotell</div>
+</div>
+    
+<hr/>
+<h4>Gå til <a asp-action="Index" asp-controller="Settings" asp-route-companyId="@Model.CompanyId">Innstillinger</a></h4>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function onSuccess(data) {
+            var tireCount = data.tireCount;
+            $('#tireCount').text(tireCount);
+            $('#tireInfo').removeClass('hidden');
+        }
+    </script>
+}

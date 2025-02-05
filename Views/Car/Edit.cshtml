@@ -1,0 +1,34 @@
+@model NorbitsChallenge.Models.Car
+
+<h2>Edit Car</h2>
+
+<form method="post" asp-controller="Car" asp-action="Edit">
+    <!-- Hidden fields for LicensePlate and CompanyId if user shouldn't change them -->
+    <input type="hidden" asp-for="LicensePlate" />
+    <input type="hidden" asp-for="CompanyId" />
+
+    <div>
+        <label>Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div>
+        <label>Model</label>
+        <input asp-for="Model" />
+    </div>
+    <div>
+        <label>Brand</label>
+        <input asp-for="Brand" />
+    </div>
+    <div>
+        <label>TireCount</label>
+        <input asp-for="TireCount" type="number" />
+    </div>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<p>
+    <a asp-controller="Car" asp-action="List" asp-route-companyId="@Model.CompanyId">
+        Cancel
+    </a>
+</p>

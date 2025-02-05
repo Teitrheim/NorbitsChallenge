@@ -1,0 +1,62 @@
+@model List<NorbitsChallenge.Models.Car>
+
+<h2>Liste over biler</h2>
+
+<!-- Link to create a new car -->
+<p>
+    <a asp-controller="Car" asp-action="Create">
+        Legg til ny bil
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>LicensePlate</th>
+            <th>Description</th>
+            <th>Model</th>
+            <th>Brand</th>
+            <th>TireCount</th>
+            <th>CompanyId</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>@car.LicensePlate</td>
+            <td>@car.Description</td>
+            <td>@car.Model</td>
+            <td>@car.Brand</td>
+            <td>@car.TireCount</td>
+            <td>@car.CompanyId</td>
+            <td>
+                <!-- Link to 'Details' action -->
+                <a asp-controller="Car"
+                   asp-action="Details"
+                   asp-route-companyId="@car.CompanyId"
+                   asp-route-licensePlate="@car.LicensePlate">
+                   Details
+                </a> |
+
+                <!-- Link to 'Edit' action -->
+                <a asp-controller="Car"
+                   asp-action="Edit"
+                   asp-route-companyId="@car.CompanyId"
+                   asp-route-licensePlate="@car.LicensePlate">
+                   Edit
+                </a> |
+
+                <!-- Link to 'Delete' action -->
+                <a asp-controller="Car"
+                   asp-action="Delete"
+                   asp-route-companyId="@car.CompanyId"
+                   asp-route-licensePlate="@car.LicensePlate">
+                   Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

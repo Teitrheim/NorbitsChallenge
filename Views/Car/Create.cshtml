@@ -1,0 +1,38 @@
+@model NorbitsChallenge.Models.Car
+
+<h2>Create a New Car</h2>
+
+<form method="post" asp-controller="Car" asp-action="Create">
+    <div>
+        <label>LicensePlate</label>
+        <input asp-for="LicensePlate" />
+    </div>
+    <div>
+        <label>Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div>
+        <label>Model</label>
+        <input asp-for="Model" />
+    </div>
+    <div>
+        <label>Brand</label>
+        <input asp-for="Brand" />
+    </div>
+    <div>
+        <label>TireCount</label>
+        <input asp-for="TireCount" type="number" />
+    </div>
+    <div>
+        <label>CompanyId</label>
+        <input asp-for="CompanyId" type="number" />
+    </div>
+
+    <button type="submit">Create</button>
+</form>
+
+<p>
+    <a asp-controller="Car" asp-action="List" asp-route-companyId="@Model.CompanyId">
+        Back to List
+    </a>
+</p>
